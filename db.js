@@ -1,11 +1,30 @@
 const mongoose = require('mongoose');
-// define the connmection url
-const mongoURL = 'mongodb://localhost:27017/hotels'
-// hotels is a  database name
-mongoose.connect(mongoURL,{useNewUrlParser:true,
-    useUnifiedTopology:true
+require('dotenv').config()
 
-})
+// define the connmection url
+
+// LOCAL URL
+// const mongoURL = 'mongodb://localhost:27017/hotels'
+
+// const mongoURL = "mongodb+srv://nitinchugh4u:<Nitin@12345>@cluster0.ele4y.mongodb.net/"
+// const mongoURL = "mongodb+srv://nitinchugh4u:Nitin@12345@cluster0.ele4y.mongodb.net/"
+// pass word change to Nitin12345
+// const mongoURL = "mongodb+srv://nitinchugh4u:Nitin12345@cluster0.ele4y.mongodb.net/";
+// online url
+// const mongoURL = "mongodb+srv://nitinchugh4u:Nitin%4012345@cluster0.ele4y.mongodb.net/myDatabase?retryWrites=true&w=majority";
+// const mongoURL = process.env.MONGODB_URL_LOCAL;
+
+const mongoURL = process.env.MONGODB_URL;
+
+
+// hotels is a  database name
+// mongoose.connect(mongoURL,{useNewUrlParser:true,
+//     useUnifiedTopology:true
+
+// })
+
+mongoose.connect(mongoURL);
+
 const db = mongoose.connection;
 
 db.on('connected',()=>{
